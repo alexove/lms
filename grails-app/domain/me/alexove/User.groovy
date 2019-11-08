@@ -1,7 +1,17 @@
 package me.alexove
 
 class User {
+    String dni
+    String fullname
+    String email
+    String password
+    boolean active = true
+
+    static hasMany = [enrolments:CourseEnrolment,courses:Course]
+    static belongsTo = [role:Role]
 
     static constraints = {
+        email email:true
+        password password:true
     }
 }
