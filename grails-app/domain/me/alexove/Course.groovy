@@ -7,10 +7,11 @@ class Course {
     Date creationDate
     Date closeDate
 
-    static hasMany = [subject:Subject]
+    static hasMany = [subjects:Subject]
     static belongsTo = [teacher:User]
 
     static constraints = {
         name unique:true
+        closeDate nullable:true, blank:true
     }
 }
