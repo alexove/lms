@@ -6,9 +6,9 @@ class Subject {
     String content // This attribute should be a large text
     boolean active = true
 
-    static hasMany = [files:SubjectFile]
+    static hasMany = [files:SubjectFile,topics:Topic]
     static belongsTo = [course:Course]
-    
+
     static constraints = {
     }
 }
