@@ -38,7 +38,7 @@
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="${createLink(controller:'course',action:'index')}">
               <i class="now-ui-icons ui-1_zoom-bold"></i>
               <p>Explorar cursos</p>
             </a>
@@ -86,9 +86,9 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Modificar cuenta</a>
+                  <a class="dropdown-item" href="#">Perfil publico</a>
+                  <a class="dropdown-item" href="#">Salir</a>
                 </div>
               </li>
             </ul>

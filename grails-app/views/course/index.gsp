@@ -6,6 +6,27 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
+        <!-- -->
+        <div class="row">
+            <g:each var="course" in="${courseList}" >
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">${course?.name}</h4>
+                        </div>
+                        <div class="card-body">
+                            ${course?.summary}
+                        </div>
+                        <div class="card-footer text-right">
+                            <a href="${createLink(id:course.id,controller:'course',action:'details')}">
+                                <i class="now-ui-icons arrows-1_minimal-right"></i> Ingresar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </g:each>
+        </div>
+        <!-- -->
         <a href="#list-course" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>

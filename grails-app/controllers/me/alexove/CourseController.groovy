@@ -96,4 +96,8 @@ class CourseController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def details(Long id){
+        respond courseService.get(id)
+    }
 }
