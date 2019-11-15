@@ -96,4 +96,8 @@ class SubjectController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def details(Long id){
+        respond Subject.get(id)
+    }
 }

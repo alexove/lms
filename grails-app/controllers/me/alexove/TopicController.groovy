@@ -96,4 +96,8 @@ class TopicController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def details(Long id){
+        respond Topic.get(id)
+    }
 }

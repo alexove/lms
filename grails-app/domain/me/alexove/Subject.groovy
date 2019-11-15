@@ -1,9 +1,9 @@
 package me.alexove
 
 class Subject {
-    String name
+    int subjectOrder
+    String title
     String summary
-    String content // This attribute should be a large text
     boolean active = true
 
     static hasMany = [files:SubjectFile,topics:Topic]
