@@ -28,6 +28,7 @@
                         <h6>Resumen</h6>
                         ${topic?.summary}
                         <h6>Archivos</h6>
+                        
                         <table>
                             <thead>
                                 <th>Titulo</th>
