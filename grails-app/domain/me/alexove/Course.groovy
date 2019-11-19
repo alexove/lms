@@ -9,7 +9,7 @@ class Course {
     String banner
     String icon
 
-    static hasMany = [subjects:Subject]
+    static hasMany = [topics:Topic]
     static belongsTo = [teacher:User]
 
     static constraints = {

@@ -9,7 +9,7 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header">
-                        ${topic.name}
+                        <h2>${topic.name}</h2>
                     </div>
                     <div class="card-body">
                         <div class="embed-responsive embed-responsive-16by9">
@@ -28,7 +28,7 @@
                         <h6>Resumen</h6>
                         ${topic?.summary}
                         <h6>Archivos</h6>
-                        
+
                         <table>
                             <thead>
                                 <th>Titulo</th>

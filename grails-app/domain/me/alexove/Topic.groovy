@@ -1,5 +1,4 @@
 package me.alexove
-import me.alexove.Subject
 
 class Topic {
     int topicOrder
@@ -9,7 +8,7 @@ class Topic {
     String videoURL
     boolean active = true
 
-    static belongsTo=[subject:Subject]
+    static hasMany = [files:TopicFile]
 
     static constraints = {
         videoURL nullable:true,blank:true

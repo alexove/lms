@@ -20,16 +20,16 @@
                                     <th>Acciones</th>
                                 </thead>
                                 <tbody>
-                                    <g:each var="subject" in="${course?.subjects.sort{ it.subjectOrder }}">
+                                    <g:each var="topic" in="${course?.topics.sort{ it.topicOrder }}">
                                         <tr>
                                             <td>
-                                                ${subject?.title}
+                                                ${topic?.name}
                                             </td>
                                             <td>
-                                                ${subject?.summary}
+                                                ${topic?.summary}
                                             </td>
                                             <td class="text-right">
-                                                <a href="${createLink(controller:'subject',action:'details',id:subject.id)}" class="btn btn-primary"><i class="now-ui-icons arrows-1_minimal-right"></i></a>
+                                                <a href="${createLink(controller:'topic',action:'details',id:topic.id)}" class="btn btn-primary"><i class="now-ui-icons arrows-1_minimal-right"></i></a>
                                             </td>
                                         </tr>
                                     </g:each>

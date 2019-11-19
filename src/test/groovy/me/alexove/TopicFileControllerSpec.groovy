@@ -5,7 +5,7 @@ import grails.testing.web.controllers.ControllerUnitTest
 import grails.validation.ValidationException
 import spock.lang.*
 
-class SubjectFileControllerSpec extends Specification implements ControllerUnitTest<SubjectFileController>, DomainUnitTest<SubjectFile> {
+class TopicFileControllerSpec extends Specification implements ControllerUnitTest<TopicFileController>, DomainUnitTest<TopicFile> {
 
     def populateValidParams(params) {
         assert params != null
@@ -17,7 +17,7 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
 
     void "Test the index action returns the correct model"() {
         given:
-        controller.subjectFileService = Mock(SubjectFileService) {
+        controller.topicFileService = Mock(TopicFileService) {
             1 * list(_) >> []
             1 * count() >> 0
         }
@@ -26,8 +26,8 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
         controller.index()
 
         then:"The model is correct"
-        !model.subjectFileList
-        model.subjectFileCount == 0
+        !model.topicFileList
+        model.topicFileCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -35,7 +35,7 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
         controller.create()
 
         then:"The model is correctly created"
-        model.subjectFile!= null
+        model.topicFile!= null
     }
 
     void "Test the save action with a null instance"() {
@@ -45,14 +45,14 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
         controller.save(null)
 
         then:"A 404 error is returned"
-        response.redirectedUrl == '/subjectFile/index'
+        response.redirectedUrl == '/topicFile/index'
         flash.message != null
     }
 
     void "Test the save action correctly persists"() {
         given:
-        controller.subjectFileService = Mock(SubjectFileService) {
-            1 * save(_ as SubjectFile)
+        controller.topicFileService = Mock(TopicFileService) {
+            1 * save(_ as TopicFile)
         }
 
         when:"The save action is executed with a valid instance"
@@ -60,38 +60,38 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'POST'
         populateValidParams(params)
-        def subjectFile = new SubjectFile(params)
-        subjectFile.id = 1
+        def topicFile = new TopicFile(params)
+        topicFile.id = 1
 
-        controller.save(subjectFile)
+        controller.save(topicFile)
 
         then:"A redirect is issued to the show action"
-        response.redirectedUrl == '/subjectFile/show/1'
+        response.redirectedUrl == '/topicFile/show/1'
         controller.flash.message != null
     }
 
     void "Test the save action with an invalid instance"() {
         given:
-        controller.subjectFileService = Mock(SubjectFileService) {
-            1 * save(_ as SubjectFile) >> { SubjectFile subjectFile ->
-                throw new ValidationException("Invalid instance", subjectFile.errors)
+        controller.topicFileService = Mock(TopicFileService) {
+            1 * save(_ as TopicFile) >> { TopicFile topicFile ->
+                throw new ValidationException("Invalid instance", topicFile.errors)
             }
         }
 
         when:"The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'POST'
-        def subjectFile = new SubjectFile()
-        controller.save(subjectFile)
+        def topicFile = new TopicFile()
+        controller.save(topicFile)
 
         then:"The create view is rendered again with the correct model"
-        model.subjectFile != null
+        model.topicFile != null
         view == 'create'
     }
 
     void "Test the show action with a null id"() {
         given:
-        controller.subjectFileService = Mock(SubjectFileService) {
+        controller.topicFileService = Mock(TopicFileService) {
             1 * get(null) >> null
         }
 
@@ -104,20 +104,20 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
 
     void "Test the show action with a valid id"() {
         given:
-        controller.subjectFileService = Mock(SubjectFileService) {
-            1 * get(2) >> new SubjectFile()
+        controller.topicFileService = Mock(TopicFileService) {
+            1 * get(2) >> new TopicFile()
         }
 
         when:"A domain instance is passed to the show action"
         controller.show(2)
 
         then:"A model is populated containing the domain instance"
-        model.subjectFile instanceof SubjectFile
+        model.topicFile instanceof TopicFile
     }
 
     void "Test the edit action with a null id"() {
         given:
-        controller.subjectFileService = Mock(SubjectFileService) {
+        controller.topicFileService = Mock(TopicFileService) {
             1 * get(null) >> null
         }
 
@@ -130,15 +130,15 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
 
     void "Test the edit action with a valid id"() {
         given:
-        controller.subjectFileService = Mock(SubjectFileService) {
-            1 * get(2) >> new SubjectFile()
+        controller.topicFileService = Mock(TopicFileService) {
+            1 * get(2) >> new TopicFile()
         }
 
         when:"A domain instance is passed to the show action"
         controller.edit(2)
 
         then:"A model is populated containing the domain instance"
-        model.subjectFile instanceof SubjectFile
+        model.topicFile instanceof TopicFile
     }
 
 
@@ -149,14 +149,14 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
         controller.update(null)
 
         then:"A 404 error is returned"
-        response.redirectedUrl == '/subjectFile/index'
+        response.redirectedUrl == '/topicFile/index'
         flash.message != null
     }
 
     void "Test the update action correctly persists"() {
         given:
-        controller.subjectFileService = Mock(SubjectFileService) {
-            1 * save(_ as SubjectFile)
+        controller.topicFileService = Mock(TopicFileService) {
+            1 * save(_ as TopicFile)
         }
 
         when:"The save action is executed with a valid instance"
@@ -164,31 +164,31 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'PUT'
         populateValidParams(params)
-        def subjectFile = new SubjectFile(params)
-        subjectFile.id = 1
+        def topicFile = new TopicFile(params)
+        topicFile.id = 1
 
-        controller.update(subjectFile)
+        controller.update(topicFile)
 
         then:"A redirect is issued to the show action"
-        response.redirectedUrl == '/subjectFile/show/1'
+        response.redirectedUrl == '/topicFile/show/1'
         controller.flash.message != null
     }
 
     void "Test the update action with an invalid instance"() {
         given:
-        controller.subjectFileService = Mock(SubjectFileService) {
-            1 * save(_ as SubjectFile) >> { SubjectFile subjectFile ->
-                throw new ValidationException("Invalid instance", subjectFile.errors)
+        controller.topicFileService = Mock(TopicFileService) {
+            1 * save(_ as TopicFile) >> { TopicFile topicFile ->
+                throw new ValidationException("Invalid instance", topicFile.errors)
             }
         }
 
         when:"The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'PUT'
-        controller.update(new SubjectFile())
+        controller.update(new TopicFile())
 
         then:"The edit view is rendered again with the correct model"
-        model.subjectFile != null
+        model.topicFile != null
         view == 'edit'
     }
 
@@ -199,13 +199,13 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
         controller.delete(null)
 
         then:"A 404 is returned"
-        response.redirectedUrl == '/subjectFile/index'
+        response.redirectedUrl == '/topicFile/index'
         flash.message != null
     }
 
     void "Test the delete action with an instance"() {
         given:
-        controller.subjectFileService = Mock(SubjectFileService) {
+        controller.topicFileService = Mock(TopicFileService) {
             1 * delete(2)
         }
 
@@ -215,7 +215,7 @@ class SubjectFileControllerSpec extends Specification implements ControllerUnitT
         controller.delete(2)
 
         then:"The user is redirected to index"
-        response.redirectedUrl == '/subjectFile/index'
+        response.redirectedUrl == '/topicFile/index'
         flash.message != null
     }
 }

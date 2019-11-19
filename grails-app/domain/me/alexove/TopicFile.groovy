@@ -1,13 +1,14 @@
 package me.alexove
 
-class SubjectFile {
+class TopicFile {
     String name
     String summary
-    Date creationDate
+    Date creationDate = new Date()
     boolean active = true
     String url
 
-    static belongsTo = [subject:Subject]
+    static belongsTo = [course:Course]
+
     static constraints = {
         url url:true
     }

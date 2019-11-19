@@ -7,37 +7,37 @@ import org.hibernate.SessionFactory
 
 @Integration
 @Rollback
-class SubjectServiceSpec extends Specification {
+class TopicFileServiceSpec extends Specification {
 
-    SubjectService subjectService
+    TopicFileService topicFileService
     SessionFactory sessionFactory
 
     private Long setupData() {
         // TODO: Populate valid domain instances and return a valid ID
-        //new Subject(...).save(flush: true, failOnError: true)
-        //new Subject(...).save(flush: true, failOnError: true)
-        //Subject subject = new Subject(...).save(flush: true, failOnError: true)
-        //new Subject(...).save(flush: true, failOnError: true)
-        //new Subject(...).save(flush: true, failOnError: true)
+        //new TopicFile(...).save(flush: true, failOnError: true)
+        //new TopicFile(...).save(flush: true, failOnError: true)
+        //TopicFile topicFile = new TopicFile(...).save(flush: true, failOnError: true)
+        //new TopicFile(...).save(flush: true, failOnError: true)
+        //new TopicFile(...).save(flush: true, failOnError: true)
         assert false, "TODO: Provide a setupData() implementation for this generated test suite"
-        //subject.id
+        //topicFile.id
     }
 
     void "test get"() {
         setupData()
 
         expect:
-        subjectService.get(1) != null
+        topicFileService.get(1) != null
     }
 
     void "test list"() {
         setupData()
 
         when:
-        List<Subject> subjectList = subjectService.list(max: 2, offset: 2)
+        List<TopicFile> topicFileList = topicFileService.list(max: 2, offset: 2)
 
         then:
-        subjectList.size() == 2
+        topicFileList.size() == 2
         assert false, "TODO: Verify the correct instances are returned"
     }
 
@@ -45,30 +45,30 @@ class SubjectServiceSpec extends Specification {
         setupData()
 
         expect:
-        subjectService.count() == 5
+        topicFileService.count() == 5
     }
 
     void "test delete"() {
-        Long subjectId = setupData()
+        Long topicFileId = setupData()
 
         expect:
-        subjectService.count() == 5
+        topicFileService.count() == 5
 
         when:
-        subjectService.delete(subjectId)
+        topicFileService.delete(topicFileId)
         sessionFactory.currentSession.flush()
 
         then:
-        subjectService.count() == 4
+        topicFileService.count() == 4
     }
 
     void "test save"() {
         when:
         assert false, "TODO: Provide a valid instance to save"
-        Subject subject = new Subject()
-        subjectService.save(subject)
+        TopicFile topicFile = new TopicFile()
+        topicFileService.save(topicFile)
 
         then:
-        subject.id != null
+        topicFile.id != null
     }
 }
