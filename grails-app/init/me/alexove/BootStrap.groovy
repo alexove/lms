@@ -9,9 +9,9 @@ class BootStrap {
     def init = { servletContext ->
         def teacherRole = new Role(name:'teacher').save(flush:true)
 
-        def teacher = new User(username:'alexove',password:'password',
+        def teacher = new Teacher(username:'alexove',password:'password',
                     dni:'43061569',role:teacherRole,email:'aa@bb.cc',
-                    fullname:'Alex Oviedo').save(flush:true)
+                    fullname:'Alex Oviedo',resume:'esta es una Descripción de la vida del profesor').save(flush:true)
 
         //--------
         def cursoLinux = new Course(name:'Curso de servidores con GNU/Linux',

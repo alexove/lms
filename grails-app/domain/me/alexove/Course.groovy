@@ -10,7 +10,7 @@ class Course {
     String icon
 
     static hasMany = [topics:Topic]
-    static belongsTo = [teacher:User]
+    static belongsTo = [teacher:Teacher]
 
     static constraints = {
         name unique:true

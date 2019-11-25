@@ -7,7 +7,6 @@ class User {
     String password
     boolean active = true
 
-    static hasMany = [enrolments:CourseEnrolment,courses:Course]
     static belongsTo = [role:Role]
 
     static constraints = {

@@ -66,6 +66,10 @@
                   <div class="card-header">
                     <h6>Docente</h6>
                   </div>
+                  <div class="card-body">
+                    <p>${topic.course.teacher.fullname}</p>
+                    <p>${topic.course.teacher.resume}</p>
+                  </div>
                 </div>
             </div>
         </div>
