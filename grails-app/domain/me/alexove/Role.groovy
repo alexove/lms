@@ -1,12 +1,24 @@
 package me.alexove
 
-class Role {
-    String name
-    boolean active = true
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
+import grails.compiler.GrailsCompileStatic
 
-    static hasMany = [permissions:Permission]
-    
-    static constraints = {
-        name unique:true
-    }
+@GrailsCompileStatic
+@EqualsAndHashCode(includes='authority')
+@ToString(includes='authority', includeNames=true, includePackage=false)
+class Role implements Serializable {
+
+	private static final long serialVersionUID = 1
+
+	String authority
+	boolean active = true
+
+	static constraints = {
+		authority nullable: false, blank: false, unique: true
+	}
+
+	static mapping = {
+		cache true
+	}
 }

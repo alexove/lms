@@ -7,7 +7,7 @@ import me.alexove.Chapter
 class BootStrap {
 
     def init = { servletContext ->
-        def teacherRole = new Role(name:'teacher').save(flush:true)
+        def teacherRole = new Role(authority:'teacher').save(flush:true)
 
         def teacher = new User(username:'alexove',password:'password',
                     dni:'43061569',role:teacherRole,email:'aa@bb.cc',
