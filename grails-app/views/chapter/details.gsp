@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
     <head>
         <meta name="layout" content="main">
-        <title>${course?.name}</title>
+        <title>${chapter?.title}</title>
     </head>
     <body>
         <div class="row">
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="title">Contenido</h5>
+                        <h5 class="title">${chapter?.title}</h5>
                     </div>
                     <div class="card-body">
+                        <p>${chapter?.summary}</p>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
@@ -20,16 +21,16 @@
                                     <th>Acciones</th>
                                 </thead>
                                 <tbody>
-                                    <g:each var="chapter" in="${course?.chapters.sort{ it.chapterOrder }}">
+                                    <g:each var="topic" in="${chapter?.topics.sort{ it.topicOrder }}">
                                         <tr>
                                             <td>
-                                                ${chapter?.title}
+                                                ${topic?.name}
                                             </td>
                                             <td>
-                                                ${chapter?.summary}
+                                                ${topic?.summary}
                                             </td>
                                             <td class="text-right">
-                                                <a href="${createLink(controller:'chapter',action:'details',id:chapter.id)}" class="btn btn-primary"><i class="now-ui-icons arrows-1_minimal-right"></i></a>
+                                                <a href="${createLink(controller:'topic',action:'details',id:topic.id)}" class="btn btn-primary"><i class="now-ui-icons arrows-1_minimal-right"></i></a>
                                             </td>
                                         </tr>
                                     </g:each>
@@ -48,13 +49,13 @@
                         <div class="author">
                             <a href="#">
                                 <img class="avatar border-gray" src="${course?.banner}" alt="...">
-                                <h5 class="title">${course?.name}</h5>
+                                <h5 class="title">${chapter?.course?.name}</h5>
                             </a>
                             <p class="description" style="color: black;">
-                            ${course?.summary}
+                            ${chapter?.course?.summary}
                             </p>
                             <p class="description" style="color: black;">
-                            ${course?.teacher?.fullname}
+                            ${chapter?.course?.teacher?.fullname}
                             </p>
                         </div>
                     </div>

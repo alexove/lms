@@ -1,6 +1,6 @@
 package me.alexove
 
-class CourseEnrolment {
+class Enrolment {
     boolean active = true
     Date beginDate
     Date expirationDate

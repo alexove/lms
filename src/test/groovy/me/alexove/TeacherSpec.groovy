@@ -3,7 +3,7 @@ package me.alexove
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class CourseEnrolmentSpec extends Specification implements DomainUnitTest<CourseEnrolment> {
+class TeacherSpec extends Specification implements DomainUnitTest<Teacher> {
 
     def setup() {
     }

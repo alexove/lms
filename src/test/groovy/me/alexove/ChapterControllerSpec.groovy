@@ -5,7 +5,7 @@ import grails.testing.web.controllers.ControllerUnitTest
 import grails.validation.ValidationException
 import spock.lang.*
 
-class CourseEnrolmentControllerSpec extends Specification implements ControllerUnitTest<CourseEnrolmentController>, DomainUnitTest<CourseEnrolment> {
+class ChapterControllerSpec extends Specification implements ControllerUnitTest<ChapterController>, DomainUnitTest<Chapter> {
 
     def populateValidParams(params) {
         assert params != null
@@ -17,7 +17,7 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
 
     void "Test the index action returns the correct model"() {
         given:
-        controller.courseEnrolmentService = Mock(CourseEnrolmentService) {
+        controller.chapterService = Mock(ChapterService) {
             1 * list(_) >> []
             1 * count() >> 0
         }
@@ -26,8 +26,8 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
         controller.index()
 
         then:"The model is correct"
-        !model.courseEnrolmentList
-        model.courseEnrolmentCount == 0
+        !model.chapterList
+        model.chapterCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -35,7 +35,7 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
         controller.create()
 
         then:"The model is correctly created"
-        model.courseEnrolment!= null
+        model.chapter!= null
     }
 
     void "Test the save action with a null instance"() {
@@ -45,14 +45,14 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
         controller.save(null)
 
         then:"A 404 error is returned"
-        response.redirectedUrl == '/courseEnrolment/index'
+        response.redirectedUrl == '/chapter/index'
         flash.message != null
     }
 
     void "Test the save action correctly persists"() {
         given:
-        controller.courseEnrolmentService = Mock(CourseEnrolmentService) {
-            1 * save(_ as CourseEnrolment)
+        controller.chapterService = Mock(ChapterService) {
+            1 * save(_ as Chapter)
         }
 
         when:"The save action is executed with a valid instance"
@@ -60,38 +60,38 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'POST'
         populateValidParams(params)
-        def courseEnrolment = new CourseEnrolment(params)
-        courseEnrolment.id = 1
+        def chapter = new Chapter(params)
+        chapter.id = 1
 
-        controller.save(courseEnrolment)
+        controller.save(chapter)
 
         then:"A redirect is issued to the show action"
-        response.redirectedUrl == '/courseEnrolment/show/1'
+        response.redirectedUrl == '/chapter/show/1'
         controller.flash.message != null
     }
 
     void "Test the save action with an invalid instance"() {
         given:
-        controller.courseEnrolmentService = Mock(CourseEnrolmentService) {
-            1 * save(_ as CourseEnrolment) >> { CourseEnrolment courseEnrolment ->
-                throw new ValidationException("Invalid instance", courseEnrolment.errors)
+        controller.chapterService = Mock(ChapterService) {
+            1 * save(_ as Chapter) >> { Chapter chapter ->
+                throw new ValidationException("Invalid instance", chapter.errors)
             }
         }
 
         when:"The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'POST'
-        def courseEnrolment = new CourseEnrolment()
-        controller.save(courseEnrolment)
+        def chapter = new Chapter()
+        controller.save(chapter)
 
         then:"The create view is rendered again with the correct model"
-        model.courseEnrolment != null
+        model.chapter != null
         view == 'create'
     }
 
     void "Test the show action with a null id"() {
         given:
-        controller.courseEnrolmentService = Mock(CourseEnrolmentService) {
+        controller.chapterService = Mock(ChapterService) {
             1 * get(null) >> null
         }
 
@@ -104,20 +104,20 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
 
     void "Test the show action with a valid id"() {
         given:
-        controller.courseEnrolmentService = Mock(CourseEnrolmentService) {
-            1 * get(2) >> new CourseEnrolment()
+        controller.chapterService = Mock(ChapterService) {
+            1 * get(2) >> new Chapter()
         }
 
         when:"A domain instance is passed to the show action"
         controller.show(2)
 
         then:"A model is populated containing the domain instance"
-        model.courseEnrolment instanceof CourseEnrolment
+        model.chapter instanceof Chapter
     }
 
     void "Test the edit action with a null id"() {
         given:
-        controller.courseEnrolmentService = Mock(CourseEnrolmentService) {
+        controller.chapterService = Mock(ChapterService) {
             1 * get(null) >> null
         }
 
@@ -130,15 +130,15 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
 
     void "Test the edit action with a valid id"() {
         given:
-        controller.courseEnrolmentService = Mock(CourseEnrolmentService) {
-            1 * get(2) >> new CourseEnrolment()
+        controller.chapterService = Mock(ChapterService) {
+            1 * get(2) >> new Chapter()
         }
 
         when:"A domain instance is passed to the show action"
         controller.edit(2)
 
         then:"A model is populated containing the domain instance"
-        model.courseEnrolment instanceof CourseEnrolment
+        model.chapter instanceof Chapter
     }
 
 
@@ -149,14 +149,14 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
         controller.update(null)
 
         then:"A 404 error is returned"
-        response.redirectedUrl == '/courseEnrolment/index'
+        response.redirectedUrl == '/chapter/index'
         flash.message != null
     }
 
     void "Test the update action correctly persists"() {
         given:
-        controller.courseEnrolmentService = Mock(CourseEnrolmentService) {
-            1 * save(_ as CourseEnrolment)
+        controller.chapterService = Mock(ChapterService) {
+            1 * save(_ as Chapter)
         }
 
         when:"The save action is executed with a valid instance"
@@ -164,31 +164,31 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'PUT'
         populateValidParams(params)
-        def courseEnrolment = new CourseEnrolment(params)
-        courseEnrolment.id = 1
+        def chapter = new Chapter(params)
+        chapter.id = 1
 
-        controller.update(courseEnrolment)
+        controller.update(chapter)
 
         then:"A redirect is issued to the show action"
-        response.redirectedUrl == '/courseEnrolment/show/1'
+        response.redirectedUrl == '/chapter/show/1'
         controller.flash.message != null
     }
 
     void "Test the update action with an invalid instance"() {
         given:
-        controller.courseEnrolmentService = Mock(CourseEnrolmentService) {
-            1 * save(_ as CourseEnrolment) >> { CourseEnrolment courseEnrolment ->
-                throw new ValidationException("Invalid instance", courseEnrolment.errors)
+        controller.chapterService = Mock(ChapterService) {
+            1 * save(_ as Chapter) >> { Chapter chapter ->
+                throw new ValidationException("Invalid instance", chapter.errors)
             }
         }
 
         when:"The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'PUT'
-        controller.update(new CourseEnrolment())
+        controller.update(new Chapter())
 
         then:"The edit view is rendered again with the correct model"
-        model.courseEnrolment != null
+        model.chapter != null
         view == 'edit'
     }
 
@@ -199,13 +199,13 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
         controller.delete(null)
 
         then:"A 404 is returned"
-        response.redirectedUrl == '/courseEnrolment/index'
+        response.redirectedUrl == '/chapter/index'
         flash.message != null
     }
 
     void "Test the delete action with an instance"() {
         given:
-        controller.courseEnrolmentService = Mock(CourseEnrolmentService) {
+        controller.chapterService = Mock(ChapterService) {
             1 * delete(2)
         }
 
@@ -215,7 +215,7 @@ class CourseEnrolmentControllerSpec extends Specification implements ControllerU
         controller.delete(2)
 
         then:"The user is redirected to index"
-        response.redirectedUrl == '/courseEnrolment/index'
+        response.redirectedUrl == '/chapter/index'
         flash.message != null
     }
 }

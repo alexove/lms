@@ -9,7 +9,7 @@ class Topic {
     boolean active = true
 
     static hasMany = [files:TopicFile]
-    static belongsTo = [course:Course]
+    static belongsTo = [chapter:Chapter]
 
     static constraints = {
         videoURL nullable:true,blank:true

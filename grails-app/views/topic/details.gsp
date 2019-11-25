@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h2>${topic.name}</h2>
-                        <a href="#">${topic?.course.name}</a>
+                        <a href="#">${topic?.chapter?.course?.name}</a>
                     </div>
                     <div class="card-body">
                         <div class="embed-responsive embed-responsive-16by9">
@@ -22,13 +22,13 @@
                     </div>
                     <div class="card-footer text-center">
                       <%
-                      def prev=Topic.findByCourseAndTopicOrder(topic.course,topic.topicOrder-1)
-                      def next=Topic.findByCourseAndTopicOrder(topic.course,topic.topicOrder+1)
+                      def prev=Topic.findByChapterAndTopicOrder(topic.chapter,topic.topicOrder-1)
+                      def next=Topic.findByChapterAndTopicOrder(topic.chapter,topic.topicOrder+1)
                       %>
                       <g:if test="${prev}">
                       <a href="${createLink(controller:'topic',action:'details',id:prev.id)}" class="btn btn-primary"><i class="now-ui-icons arrows-1_minimal-left"></i> ${prev?.name}</a>
                       </g:if>
-                      <a href="${createLink(controller:'course',action:'details',id:topic.course.id)}" class="btn btn-primary"><i class="now-ui-icons design_bullet-list-67"></i> Indice</a>
+                      <a href="${createLink(controller:'course',action:'details',id:topic.chapter.course.id)}" class="btn btn-primary"><i class="now-ui-icons design_bullet-list-67"></i> Indice</a>
                       <g:if test="${next}">
                       <a href="${createLink(controller:'topic',action:'details',id:next.id)}" class="btn btn-primary">${next?.name} <i class="now-ui-icons arrows-1_minimal-right"></i></a>
                       </g:if>
