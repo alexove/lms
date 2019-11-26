@@ -2,6 +2,7 @@ package me.alexove
 
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
+import grails.plugin.springsecurity.annotation.Secured
 
 class ChapterController {
 
@@ -13,7 +14,7 @@ class ChapterController {
         params.max = Math.min(max ?: 10, 100)
         respond chapterService.list(params), model:[chapterCount: chapterService.count()]
     }
-
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER','ROLE_STUDENT'])
     def details(Long id) {
         respond chapterService.get(id)
     }

@@ -2,6 +2,7 @@ package me.alexove
 
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
+import grails.plugin.springsecurity.annotation.Secured
 
 class CourseController {
 
@@ -9,6 +10,7 @@ class CourseController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER','ROLE_STUDENT'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond courseService.list(params), model:[courseCount: courseService.count()]
@@ -97,6 +99,7 @@ class CourseController {
         }
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER','ROLE_STUDENT'])
     def details(Long id){
         respond courseService.get(id)
     }

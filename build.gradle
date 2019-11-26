@@ -47,6 +47,7 @@ dependencies {
     compile "org.hibernate:hibernate-core:5.1.16.Final"
     compile "org.grails.plugins:gsp"
     compile 'org.grails.plugins:spring-security-core:3.3.1'
+    compile "mysql:mysql-connector-java:5.1.48"
     console "org.grails:grails-console"
     profile "org.grails.profiles:web"
     runtime "org.glassfish.web:el-impl:2.1.2-b03"

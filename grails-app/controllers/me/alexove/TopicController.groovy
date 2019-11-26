@@ -2,6 +2,7 @@ package me.alexove
 
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
+import grails.plugin.springsecurity.annotation.Secured
 
 class TopicController {
 
@@ -97,6 +98,7 @@ class TopicController {
         }
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER','ROLE_STUDENT'])
     def details(Long id){
         respond Topic.get(id)
     }
