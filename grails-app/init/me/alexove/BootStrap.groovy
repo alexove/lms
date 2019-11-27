@@ -44,16 +44,13 @@ class BootStrap {
         clCh02.addToTopics(new Topic(topicOrder:8,name:'Herramientas del sistema',summary:'***',content:'****'))
         clCh02.save(flush:true)
 
-        // cursoLinux.save(flush:true)
-
-        //-----
-        // def cursoGrails = new Course(name:'Curso de Grails',summary:'Aprendemos a programar aplicaciones web',creationDate:new Date(),teacher:teacher).save(flush:true)
-        // cursoGrails.addToTopics(new Topic(topicOrder:1,name:'Algo de historia',summary:'hola mundo',content:'ssss'))
-        // cursoGrails.addToTopics(new Topic(topicOrder:2,name:'Arquitectura de una aplicación en Grails',summary:'hola mundo',content:'ssss'))
-        // cursoGrails.addToTopics(new Topic(topicOrder:3,name:'Nuevas tecnologias dentro de Grails',summary:'hola mundo',content:'ssss'))
-        // cursoGrails.addToTopics(new Topic(topicOrder:4,name:'Aspectos de modularidad de Grails',summary:'hola mundo',content:'ssss'))
-        //
-        // cursoGrails.save(flush:true)
+        def cursoGrails = new Course(name:'Curso de Grails',summary:'Aprendemos a programar aplicaciones web',creationDate:new Date(),teacher:teacher).save(flush:true)
+        def cgCh01=new Chapter(chapterOrder:1,title:'Basico',summary:'**',course:cursoGrails).save(flush:true)
+        cgCh01.addToTopics(new Topic(topicOrder:1,name:'Algo de historia',summary:'hola mundo',content:'ssss'))
+        cgCh01.addToTopics(new Topic(topicOrder:2,name:'Arquitectura de una aplicación en Grails',summary:'hola mundo',content:'ssss'))
+        cgCh01.addToTopics(new Topic(topicOrder:3,name:'Nuevas tecnologias dentro de Grails',summary:'hola mundo',content:'ssss'))
+        cgCh01.addToTopics(new Topic(topicOrder:4,name:'Aspectos de modularidad de Grails',summary:'hola mundo',content:'ssss'))
+        cgCh01.save(flush:true)
     }
     def destroy = {
     }
