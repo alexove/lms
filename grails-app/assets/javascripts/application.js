@@ -6,8 +6,7 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery-3.3.1.min
-//= require bootstrap
+//= require bootstrap.bundle.min
 //= require popper.min
-//= require perfect-scrollbar.jquery.min
-//= require now-ui-dashboard.min
+//= require sb-admin-2.min
 //= require_self

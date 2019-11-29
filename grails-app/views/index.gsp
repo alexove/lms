@@ -1,19 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main"/>
     <title>Welcome to Grails</title>
 </head>
 <body>
-<div class="svg" role="presentation">
-    <div class="grails-logo-container">
-        <asset:image src="grails-cupsonly-logo-white.svg" class="grails-logo"/>
-    </div>
-</div>
-
-<div id="content" role="main">
-    <section class="row colset-2-its">
-        <h1>Welcome to Grails</h1>
+    <h1>Welcome to Grails</h1>
         <p>
             Congratulations, you have successfully started your first Grails application! At the moment
             this is the default page, feel free to modify it to either redirect to a controller or display
@@ -31,8 +23,5 @@
                 </g:each>
             </ul>
         </div>
-    </section>
-</div>
-
 </body>
 </html>

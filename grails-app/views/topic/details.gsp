@@ -28,11 +28,11 @@
                       def next=Topic.findByChapterAndTopicOrder(topic.chapter,topic.topicOrder+1)
                       %>
                       <g:if test="${prev}">
-                      <a href="${createLink(controller:'topic',action:'details',id:prev.id)}" class="btn btn-primary"><i class="now-ui-icons arrows-1_minimal-left"></i> ${prev?.name}</a>
+                      <a href="${createLink(controller:'topic',action:'details',id:prev.id)}" class="btn btn-primary"><i class="fas fa-angle-left"></i> ${prev?.name}</a>
                       </g:if>
-                      <a href="${createLink(controller:'course',action:'details',id:topic.chapter.course.id)}" class="btn btn-primary"><i class="now-ui-icons design_bullet-list-67"></i> Indice</a>
+                      <a href="${createLink(controller:'course',action:'details',id:topic.chapter.course.id)}" class="btn btn-primary"><i class="fas fa-list"></i> Indice</a>
                       <g:if test="${next}">
-                      <a href="${createLink(controller:'topic',action:'details',id:next.id)}" class="btn btn-primary">${next?.name} <i class="now-ui-icons arrows-1_minimal-right"></i></a>
+                      <a href="${createLink(controller:'topic',action:'details',id:next.id)}" class="btn btn-primary">${next?.name} <i class="fas fa-angle-right"></i></a>
                       </g:if>
                     </div>
                 </div>

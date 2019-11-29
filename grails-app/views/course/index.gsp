@@ -9,21 +9,18 @@
         <!-- -->
         <div class="row">
             <g:each var="course" in="${courseList}" >
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">${course?.name}</h4>
-                        </div>
-                        <div class="card-body">
-                            ${course?.summary}
-                        </div>
-                        <div class="card-footer text-right">
-                            <a href="${createLink(id:course.id,controller:'course',action:'details')}">
-                                <i class="now-ui-icons arrows-1_minimal-right"></i> Ingresar
-                            </a>
-                        </div>
+            <div class="col-md-3 col-xs-12">
+                <div class="card">
+                    <img src="...." class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">${course?.name}</h5>
+                        <p>${course.summary}</p>
+                    </div>
+                    <div class="card-footer text-right">
+                        <a class="btn btn-primary text-right" href="${createLink(controller:'course',action:'details',id:course.id)}"><g:message code='course.see_details.label' /> <i class="fas fa-arrow"></i></a>
                     </div>
                 </div>
+            </div>
             </g:each>
         </div>
         <!-- -->

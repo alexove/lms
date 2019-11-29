@@ -29,7 +29,7 @@
                                                 ${chapter?.summary}
                                             </td>
                                             <td class="text-right">
-                                                <a href="${createLink(controller:'chapter',action:'details',id:chapter.id)}" class="btn btn-primary"><i class="now-ui-icons arrows-1_minimal-right"></i></a>
+                                                <a href="${createLink(controller:'chapter',action:'details',id:chapter.id)}" class="btn btn-primary"><g:message code="go.label" /> <i class="fas fa-angle-right"></i></a>
                                             </td>
                                         </tr>
                                     </g:each>
