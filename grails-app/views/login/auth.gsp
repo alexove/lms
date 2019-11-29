@@ -22,6 +22,15 @@
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4"><g:message code="login.label" /></h1>
                                         </div>
+                                        <g:if test="${flash.message}">
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>Error</strong> ${flash.message}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        </g:if>
+
                                         <form class="user" method="post" action="${createLink(controller:'login',action:'authenticate')}">
                                             <div class="form-group">
                                                 <input type="text" class="form-control form-control-user" name="username" aria-describedby="emailHelp" placeholder="${message(code:'username.label')}">

@@ -16,6 +16,7 @@ class CourseController {
         respond courseService.list(params), model:[courseCount: courseService.count()]
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER'])
     def show(Long id) {
         respond courseService.get(id)
     }

@@ -7,13 +7,25 @@ import me.alexove.Chapter
 class BootStrap {
 
     def init = { servletContext ->
-        def teacherRole = new Role(authority:'ROLE_ADMIN').save(flush:true)
+        def adminRole = new Role(authority:'ROLE_ADMIN').save(flush:true)
+        def teacherRole = new Role(authority:'ROLE_TEACHER').save(flush:true)
+        def studentRole = new Role(authority:'ROLE_STUDENT').save(flush:true)
 
-        def teacher = new User(username:'alexove',password:'password',
-                    dni:'43061569',role:teacherRole,email:'aa@bb.cc',
-                    fullname:'Alex Oviedo').save(flush:true)
+        def admin = new User(username:'admin',password:'admin',
+                    dni:'430615690',role:adminRole,email:'aa@bb.cc',
+                    fullname:'SUPER_ADMIN').save(flush:true)
 
+        def teacher = new User(username:'teacher',password:'teacher',
+                    dni:'430615691',role:teacherRole,email:'aa@bb.cc',
+                    fullname:'TEACHER').save(flush:true)
+
+        def student = new User(username:'student',password:'student',
+                    dni:'430615692',role:teacherRole,email:'aa@bb.cc',
+                    fullname:'STUDENT').save(flush:true)
+
+        new me.alexove.UserRole(user:admin,role:adminRole).save(flush:true)
         new me.alexove.UserRole(user:teacher,role:teacherRole).save(flush:true)
+        new me.alexove.UserRole(user:student,role:studentRole).save(flush:true)
 
         //--------
         def cursoLinux = new Course(name:'Curso de servidores con GNU/Linux',
