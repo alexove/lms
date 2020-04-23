@@ -88,8 +88,9 @@
                             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                                 <i class="fa fa-bars"></i>
                             </button>
-                            <!-- Topbar Navbar -->
+                            <!-- Topbar Navbar ***** -->
                             <ul class="navbar-nav ml-auto">
+                              <sec:ifLoggedIn>
                                 <!-- Nav Item - Alerts -->
                                 <li class="nav-item dropdown no-arrow mx-1">
                                     <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -216,11 +217,15 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Logout
+                                        <g:message code='logout.label' />
                                     </a>
                                 </div>
                             </li>
+                            </sec:ifLoggedIn>
                         </ul>
+                        <sec:ifNotLoggedIn>
+                          <a class="btn btn-primary btn-sm" href="${createLink(controller:'login')}" role="button"><g:message code='login.btn.label' /></a>
+                      </sec:ifNotLoggedIn>
                     </nav>
 
                     <div class="container-fluid">
@@ -251,7 +256,7 @@
                     </div>
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
-                        <g:link method="post" elementId='logout' controller='logout' class="btn btn-primary">Logout</g:link>
+                        <g:link method="post" elementId='logout' controller='logout' class="btn btn-primary"><g:message code='logout.label' /></g:link>
                     </div>
                 </div>
             </div>

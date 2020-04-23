@@ -10,6 +10,7 @@ class ChapterController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER','ROLE_STUDENT'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond chapterService.list(params), model:[chapterCount: chapterService.count()]
@@ -18,14 +19,17 @@ class ChapterController {
     def details(Long id) {
         respond chapterService.get(id)
     }
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER'])
     def show(Long id) {
         respond chapterService.get(id)
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER'])
     def create() {
         respond new Chapter(params)
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER'])
     def save(Chapter chapter) {
         if (chapter == null) {
             notFound()
@@ -48,10 +52,12 @@ class ChapterController {
         }
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER'])
     def edit(Long id) {
         respond chapterService.get(id)
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER'])
     def update(Chapter chapter) {
         if (chapter == null) {
             notFound()
@@ -74,6 +80,7 @@ class ChapterController {
         }
     }
 
+    @Secured(['ROLE_ADMIN','ROLE_TEACHER'])
     def delete(Long id) {
         if (id == null) {
             notFound()
