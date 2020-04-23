@@ -93,7 +93,7 @@ dataSource:
     jmxExport: true
     driverClassName: com.mysql.jdbc.Driver
     username: alexove
-    password: Alexito@1984
+    password: <Clave aqui>
 
 environments:
     development:
